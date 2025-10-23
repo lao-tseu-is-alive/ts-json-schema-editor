@@ -302,8 +302,12 @@ function selectElement() {
  */
 function moveUp() {
   if (!canMoveUp.value) return;
-  const newOrder = sortedElements.value[elementIndex.value - 1].order;
-  formBuilderStore.reorderElement(props.element.id, newOrder);
+  // Check if the element exists before accessing its order
+  const previousElement = sortedElements.value[elementIndex.value - 1];
+  if (previousElement) {
+    const newOrder = previousElement.order;
+    formBuilderStore.reorderElement(props.element.id, newOrder);
+  }
 }
 
 /**
@@ -311,8 +315,12 @@ function moveUp() {
  */
 function moveDown() {
   if (!canMoveDown.value) return;
-  const newOrder = sortedElements.value[elementIndex.value + 1].order;
-  formBuilderStore.reorderElement(props.element.id, newOrder);
+  // Check if the element exists before accessing its order
+  const nextElement = sortedElements.value[elementIndex.value + 1];
+  if (nextElement) {
+    const newOrder = nextElement.order;
+    formBuilderStore.reorderElement(props.element.id, newOrder);
+  }
 }
 
 /**

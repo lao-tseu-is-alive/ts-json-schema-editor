@@ -33,7 +33,8 @@ export const useFormBuilderStore = defineStore('formBuilder', {
          * Check if form has any elements
          */
         hasElements: (state): boolean => {
-            return state.currentSchema?.elements.length > 0;
+            // Use nullish coalescing to avoid error on undefined .length
+            return (state.currentSchema?.elements.length ?? 0) > 0;
         },
 
         /**
@@ -138,10 +139,11 @@ export const useFormBuilderStore = defineStore('formBuilder', {
 
             const index = this.currentSchema.elements.findIndex(el => el.id === elementId);
             if (index !== -1) {
+                // Cast the result to FormElement to satisfy TypeScript's discriminated union
                 this.currentSchema.elements[index] = {
                     ...this.currentSchema.elements[index],
                     ...updates,
-                };
+                } as FormElement;
                 this.currentSchema.updated = new Date();
             }
         },
@@ -155,8 +157,11 @@ export const useFormBuilderStore = defineStore('formBuilder', {
             const elementIndex = this.currentSchema.elements.findIndex(el => el.id === elementId);
             if (elementIndex === -1) return;
 
-            const elementOrder = this.currentSchema.elements[elementIndex].order;
+            // Get the element and check if it exists before accessing .order
+            const element = this.currentSchema.elements[elementIndex];
+            if (!element) return;
 
+            const elementOrder = element.order;
             // Remove element
             this.currentSchema.elements.splice(elementIndex, 1);
 

@@ -240,7 +240,10 @@ function duplicateElement(elementId: string) {
     formBuilderStore.addElement(element.type);
     // Update with copied properties
     setTimeout(() => {
-      formBuilderStore.updateElement(formBuilderStore.sortedElements[formBuilderStore.sortedElements.length - 1].id, newElement);
+      const newElementInstance = formBuilderStore.sortedElements[formBuilderStore.sortedElements.length - 1];
+      if (newElementInstance) {
+        formBuilderStore.updateElement(newElementInstance.id, newElement);
+      }
     }, 0);
   }
 }
