@@ -9,6 +9,9 @@
 
 You can visually build a form, and the corresponding schema is generated for you. You can also **import an existing JSON Schema** to modify it using the visual editor and **export** it back out.
 
+
+![Main User Interface](https://raw.githubusercontent.com/lao-tseu-is-alive/ts-json-schema-editor/refs/heads/main/images/mainUI.png)
+
 ## ✨ Features
 
 Based on the project's components and store logic, here are the core features:
