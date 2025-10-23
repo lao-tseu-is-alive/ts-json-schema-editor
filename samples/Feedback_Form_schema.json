@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "title": "Feedback Form",
+  "description": "please give us your feedback about your user experience ",
+  "properties": {
+    "f_name": {
+      "type": "string",
+      "title": "Nom",
+      "description": "Enter your name",
+      "minLength": 2,
+      "maxLength": 80
+    },
+    "f_email": {
+      "type": "string",
+      "title": "Email",
+      "description": "Enter your email"
+    },
+    "field_mood": {
+      "type": "string",
+      "title": "What's your mood ?",
+      "description": "please choose your mood",
+      "enum": [
+        "optionMoodHappy",
+        "optionMoodSad",
+        "optionMoodNeutral"
+      ]
+    },
+    "f_comment": {
+      "type": "string",
+      "title": "Comment",
+      "description": "please give us any comment you want about your user experience"
+    }
+  },
+  "required": [
+    "f_name",
+    "f_email"
+  ]
+}
