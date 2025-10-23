@@ -563,14 +563,16 @@ function duplicateElement() {
   // Get the newly added element and copy properties
   setTimeout(() => {
     const newElement = formBuilderStore.sortedElements[formBuilderStore.sortedElements.length - 1];
-    const updates = {
-      ...element,
-      id: newElement.id,
-      name: `${element.name}_copy`,
-      label: `${element.label} (Copy)`,
-      order: newElement.order
-    };
-    formBuilderStore.updateElement(newElement.id, updates);
+    if (newElement) {
+      const updates = {
+        ...element,
+        id: newElement.id,
+        name: `${element.name}_copy`,
+        label: `${element.label} (Copy)`,
+        order: newElement.order
+      };
+      formBuilderStore.updateElement(newElement.id, updates);
+    }
   }, 0);
 }
 

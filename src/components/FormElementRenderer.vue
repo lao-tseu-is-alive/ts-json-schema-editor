@@ -385,7 +385,7 @@ import type {
   NumberFieldElement,
   DateFieldElement,
   SelectFieldElement
-} from '@/types/form-builder';
+} from '@/types/formBuilder.ts';
 
 /**
  * Form Element Renderer Component
